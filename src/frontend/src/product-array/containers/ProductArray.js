@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import fetchProducts from '../actions/fetchProducts'
+import filterProducts from '../actions/filterProducts'
 import ProductArray from '../components/ProductArray'
 
 const stateToProps = (state, ownProps) => {
@@ -10,7 +11,8 @@ const stateToProps = (state, ownProps) => {
 
 const dispatchToProps = (dispatch, ownProps) => {
   return {
-    fetchProducts: () => dispatch(fetchProducts())
+    fetchProducts: () => dispatch(fetchProducts()),
+    filterProducts: (tag) => dispatch(filterProducts(tag))
   }
 }
 

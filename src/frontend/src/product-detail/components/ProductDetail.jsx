@@ -1,18 +1,13 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
 
-class ProductDetail extends Component {
+class ProductDetail extends PureComponent {
   constructor (props) {
     super(props)
   }
 
-  componentDidMount() {
-    const { productId } = this.props
-    this.props.updateProductDetail(productId)
-  }
-
   render () {
-    const { details: d } = this.props
+    const { productDetail: d } = this.props
     return (
       <>
         {d &&
@@ -58,7 +53,7 @@ class ProductDetail extends Component {
                 {
                   d.tags.map((t, i) => (
                     <li key={i}>
-                      <Link to={`/products/${t}`}>{t}</Link>
+                      <Link to={`/products/tags/${t}`}>{t}</Link>
                     </li>
                   ))
                 }

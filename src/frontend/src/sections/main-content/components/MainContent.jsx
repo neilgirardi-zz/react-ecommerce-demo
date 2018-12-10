@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Products from '../../product-array/containers/ProductArray'
-import ProductDetail from '../../product-detail/containers/ProductDetail'
+import Products from '../../../product-array/containers/ProductArray'
+import ProductDetail from '../../../product-detail/containers/ProductDetail'
 
 class MainContent extends Component {
   constructor (props) {
@@ -13,6 +13,9 @@ class MainContent extends Component {
       <Switch>
         <Route exact path='/' render={props => (
           <Products />
+        )} />
+        <Route path='/products/tags/:tag' render={props => (
+          <Products tag={props.match.params.tag} />
         )} />
         <Route path='/detail/:productId' render={props => (
           <ProductDetail productId={props.match.params.productId} />)}

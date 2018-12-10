@@ -1,23 +1,37 @@
 import { connect } from 'react-redux'
 import ProductDetail from '../components/ProductDetail'
-import fetchProductDetail from '../actions/fetchProductDetail'
+import updateProductDetail from '../actions/updateProductDetail'
 
 const stateToProps = ( state, ownProps ) => {
-  const { productDetail } = state
+  const { productArray, productDetail } = state
   return {
-    details: productDetail
+    productArray,
+    productDetail
   }
 }
 
 const dispatchToProps = (dispatch, ownProps) => {
   return {
-    updateProductDetail: () => dispatch(fetchProductDetail(ownProps.productId))
+    updateProductDetail: (productDetails) => dispatch(updateProductDetail(productDetails))
+  }
+}
+
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  const { productArray } = stateProps
+  const { updateProductDetail } = dispatchProps
+  const detail = productArray.filter( p => p.id === ownProps.productId ).pop()
+  updateProductDetail(detail)
+  return {
+    ...stateProps,
+    ...dispatchProps,
+    ...ownProps
   }
 }
 
 const connected = connect(
   stateToProps,
-  dispatchToProps
+  dispatchToProps,
+  mergeProps
 )(ProductDetail)
 
 export default connected

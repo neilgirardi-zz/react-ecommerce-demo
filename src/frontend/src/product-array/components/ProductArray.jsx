@@ -1,14 +1,26 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
 
-class ProductArray extends Component {
+class ProductArray extends PureComponent {
   constructor (props) {
     super(props)
   }
 
   componentDidMount() {
-    this.props.fetchProducts()
+    const { tag } = this.props
+    this._getData(tag)
   }
+  componentWillReceiveProps(nextProps) {
+    const { tag } = nextProps
+    if (tag !== this.props.tag) {
+      this._getData(tag)
+    }
+  }
+
+  _getData(tag) {
+    tag === undefined ? this.props.fetchProducts() : this.props.filterProducts(tag)
+  }
+
 
   render () {
     const {products} = this.props
