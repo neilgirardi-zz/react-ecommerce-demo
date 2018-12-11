@@ -1,10 +1,7 @@
 import React, { PureComponent } from 'react'
-import { Link } from 'react-router-dom'
+import ProductListing from './ProductListing'
 
 class ProductArray extends PureComponent {
-  constructor (props) {
-    super(props)
-  }
 
   componentDidMount() {
     const { tag } = this.props
@@ -31,20 +28,7 @@ class ProductArray extends PureComponent {
           <ul>
             {products.map((p, i) => (
               <li key={i}>
-                <div>
-                  <h2>
-                    <Link to={`/detail/${p.id}`}>
-                      {p.title}
-                    </Link>
-                  </h2>
-                  {p.thumbnail &&
-                    <img src={p.thumbnail} alt={p.title} />
-                  }
-                  {p.description &&
-                    <p>{p.description}</p>
-                  }
-                  <p>{`$${p.price}`}</p>
-                </div>
+                <ProductListing product={p}/>
               </li>
             ))}
           </ul>

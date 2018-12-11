@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import Header from './sections/header/components/Header'
-import MainContent from './sections/main-content/components/MainContent'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Header from './page-sections/header/components/Header'
+import MainContent from './page-sections/main-content/components/MainContent'
 
 class App extends Component {
   render () {

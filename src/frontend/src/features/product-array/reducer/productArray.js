@@ -8,11 +8,7 @@ export default (state = {}, action) => {
 
     case FILTER_PRODUCTS:
       const filter = action.payload
-      return state.filter(item => {
-        if (item.hasOwnProperty('tags') && Array.isArray(item.tags)) {
-          return item.tags.indexOf(filter) !== -1
-        }
-      })
+      return state.filter(item => item.tags.indexOf(filter) !== -1)
 
     default:
       return state

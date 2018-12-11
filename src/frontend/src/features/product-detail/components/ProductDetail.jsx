@@ -1,9 +1,20 @@
 import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
+import ItemQuantity from './../../../elements/components/ItemQuantity'
 
 class ProductDetail extends PureComponent {
   constructor (props) {
     super(props)
+    this.state = {
+      quantity: 1
+    }
+    this._updateQuantity = this._updateQuantity.bind(this)
+  }
+
+  _updateQuantity(evt){
+    this.setState({
+      quantity: evt.target.value
+    })
   }
 
   render () {
@@ -17,6 +28,7 @@ class ProductDetail extends PureComponent {
                 {d.title}
               </Link>
             </h2>
+
             {d.images && Array.isArray(d.images) &&
               <ul>
                 {
@@ -28,18 +40,26 @@ class ProductDetail extends PureComponent {
                 }
               </ul>
             }
+
             {d.description &&
               <p>{d.description}</p>
             }
+
             {d.price &&
               <p>{`$${d.price}`}</p>
             }
-            {d.inStock &&
+
+            {d.inStock !== undefined &&
               <div>
                 Availability: {d.inStock ? 'In Stock!' : 'Out of Stock'}
               </div>
             }
+
+            <ItemQuantity value={this.state.quantity} onChangeCB={(e) => this._updateQuantity(e)} />
+
+            <button disabled={!d.inStock}>Add to Cart</button>
             <h2>Reviews:</h2>
+
             {d.reviews && Array.isArray(d.reviews) &&
               d.reviews.map((r, i) => (
                 <div key={i}>
@@ -48,6 +68,7 @@ class ProductDetail extends PureComponent {
                 </div>
               ))
             }
+
             {d.tags && Array.isArray(d.tags) &&
               <ul>
                 {
