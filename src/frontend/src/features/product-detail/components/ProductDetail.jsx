@@ -9,12 +9,21 @@ class ProductDetail extends PureComponent {
       quantity: 1
     }
     this._updateQuantity = this._updateQuantity.bind(this)
+    this._addToCart = this._addToCart.bind(this)
   }
 
   _updateQuantity(evt){
     this.setState({
-      quantity: evt.target.value
+      quantity: Number(evt.target.value)
     })
+  }
+
+  _addToCart(){
+    const cartItem = {
+      ...this.props.productDetail,
+      quantity: this.state.quantity
+    }
+    this.props.addToCart(cartItem)
   }
 
   render () {
@@ -55,9 +64,13 @@ class ProductDetail extends PureComponent {
               </div>
             }
 
-            <ItemQuantity value={this.state.quantity} onChangeCB={(e) => this._updateQuantity(e)} />
+            <ItemQuantity
+              value={this.state.quantity}
+              onChangeCB={(e) => this._updateQuantity(e)}
+            />
 
-            <button disabled={!d.inStock}>Add to Cart</button>
+            <button
+              disabled={!d.inStock} onClick={() => this._addToCart()}>Add to Cart</button>
             <h2>Reviews:</h2>
 
             {d.reviews && Array.isArray(d.reviews) &&

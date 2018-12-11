@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import ProductDetail from '../components/ProductDetail'
 import updateProductDetail from '../actions/updateProductDetail'
+import addToCart from '../../cart/actions/addToCart'
 
 const stateToProps = ( state, ownProps ) => {
   const { productArray, productDetail } = state
@@ -12,7 +13,8 @@ const stateToProps = ( state, ownProps ) => {
 
 const dispatchToProps = (dispatch, ownProps) => {
   return {
-    updateProductDetail: (productDetails) => dispatch(updateProductDetail(productDetails))
+    updateProductDetail: (productDetails) => dispatch(updateProductDetail(productDetails)),
+    addToCart: (cartItem) => dispatch(addToCart(cartItem))
   }
 }
 
