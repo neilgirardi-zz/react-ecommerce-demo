@@ -4,11 +4,11 @@ import ItemQuantity from '../../../reusable-elements/components/ItemQuantity'
 
 class ProductListing extends PureComponent {
     constructor (props) {
-        super(props)
+        super(props);
         this.state = {
             quantity: 1
-        }
-        this._updateQuantity = this._updateQuantity.bind(this)
+        };
+        this._updateQuantity = this._updateQuantity.bind(this);
         this._addToCart = this._addToCart.bind(this)
     }
 
@@ -52,8 +52,6 @@ class ProductListing extends PureComponent {
                 />
 
                 <button disabled={!p.inStock} onClick={() => this._addToCart()}>Add to Cart</button>
-
-                <h2>Reviews:</h2>
             </>
         )
     }

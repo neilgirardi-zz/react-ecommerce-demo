@@ -5,17 +5,18 @@ class ProductArray extends PureComponent {
 
   componentDidMount() {
     const { tag } = this.props
-    this._getData(tag)
+    this._getProducts(tag)
   }
+
   componentWillReceiveProps(nextProps) {
     const { tag } = nextProps
     if (tag !== this.props.tag) {
-      this.props.filterProducts(tag)
+      this._getProducts(tag)
     }
   }
 
-  _getData(tag) {
-    tag === undefined ? this.props.fetchProducts() : this.props.filterProducts(tag)
+  _getProducts(tag) {
+    (tag === undefined) ? this.props.fetchProducts() : this.props.filterProducts(tag)
   }
 
 

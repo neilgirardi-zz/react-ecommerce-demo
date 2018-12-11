@@ -5,8 +5,9 @@ import addToCart from '../../cart/actions/addToCart'
 
 const stateToProps = ( state, ownProps ) => {
   const { productArray, productDetail } = state
+  const { products } = productArray
   return {
-    productArray,
+    products,
     productDetail
   }
 }
@@ -19,9 +20,9 @@ const dispatchToProps = (dispatch, ownProps) => {
 }
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
-  const { productArray } = stateProps
+  const { products } = stateProps
   const { updateProductDetail } = dispatchProps
-  const detail = productArray.filter( p => p.id === ownProps.productId ).pop()
+  const detail = products.filter( p => p.id === ownProps.productId ).pop()
   updateProductDetail(detail)
   return {
     ...stateProps,
