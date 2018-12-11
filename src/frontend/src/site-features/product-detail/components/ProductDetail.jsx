@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
-import ItemQuantity from './../../../elements/components/ItemQuantity'
+import ItemQuantity from '../../../reusable-elements/components/ItemQuantity'
 
 class ProductDetail extends PureComponent {
   constructor (props) {
@@ -69,8 +69,8 @@ class ProductDetail extends PureComponent {
               onChangeCB={(e) => this._updateQuantity(e)}
             />
 
-            <button
-              disabled={!d.inStock} onClick={() => this._addToCart()}>Add to Cart</button>
+            <button disabled={!d.inStock} onClick={() => this._addToCart()}>Add to Cart</button>
+
             <h2>Reviews:</h2>
 
             {d.reviews && Array.isArray(d.reviews) &&

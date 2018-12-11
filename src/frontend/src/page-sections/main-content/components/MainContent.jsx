@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Products from '../../../features/product-array/containers/ProductArray'
-import ProductDetail from '../../../features/product-detail/containers/ProductDetail'
+import Products from '../../../site-features/product-array/containers/ProductArray'
+import ProductDetail from '../../../site-features/product-detail/containers/ProductDetail'
 
 class MainContent extends Component {
 

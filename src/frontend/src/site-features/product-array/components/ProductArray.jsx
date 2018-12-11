@@ -10,7 +10,7 @@ class ProductArray extends PureComponent {
   componentWillReceiveProps(nextProps) {
     const { tag } = nextProps
     if (tag !== this.props.tag) {
-      this._getData(tag)
+      this.props.filterProducts(tag)
     }
   }
 
@@ -28,7 +28,7 @@ class ProductArray extends PureComponent {
           <ul>
             {products.map((p, i) => (
               <li key={i}>
-                <ProductListing product={p}/>
+                <ProductListing product={p} addToCart={this.props.addToCart}/>
               </li>
             ))}
           </ul>
