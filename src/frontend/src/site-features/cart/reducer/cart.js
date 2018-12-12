@@ -2,47 +2,112 @@ import { ADD_TO_CART } from '../actions/addToCart'
 import { REMOVE_FROM_CART } from '../actions/removeFromCart'
 import { UPDATE_CART_QUANTITY } from '../actions/updateCartQuantity'
 
-export default (state={items: []}, action) => {
+export default (state={items: {}, count: 0}, action) => {
   switch(action.type) {
     case ADD_TO_CART:
-      const updatedItems = addItem(state, action)
-      const subTotal = calculateSubTotal(updatedItems)
-      return {
-        ...state,
-        items: updatedItems,
-        subTotal
-      }
+      return GetNextCartState.addItemToCart(state, action)
 
     case REMOVE_FROM_CART:
-      return state
+      return GetNextCartState.removeItemFromCart(state, action)
 
     case UPDATE_CART_QUANTITY:
-      return state
+      return GetNextCartState.updateItemQuantity(state, action)
 
     default:
       return state
   }
 }
 
-function addItem({ items }, { payload }){
-  const sliced = items.slice(0)
-  sliced.push(payload)
-  return sliced
-}
+class GetNextCartState {
 
-function calculateSubTotal(items) {
-  const itemSubTotals = []
-  items.forEach(item => {
-    itemSubTotals.push(item.price * item.quantity)
-  })
-  const orderSubTotal = Number(itemSubTotals.reduce( (curr, acc) => curr + acc, 0 ).toFixed(2))
-  const tax = Number((orderSubTotal * 0.08875).toFixed(2))
-  const shipping = 9.99
-  const grandTotal = (orderSubTotal + tax + shipping).toFixed(2)
-  return {
-    subTotal: orderSubTotal,
-    tax,
-    shipping,
-    grandTotal
+  /**
+   *
+   * @param {Object} cartItems
+   * @returns {{shipping: number, grandTotal: string, tax: number, subTotal: number}}
+   */
+  static calculateSubTotal(cartItems) {
+    const cartItemIds = Object.keys(cartItems)
+    const itemSubTotals = []
+
+    cartItemIds.forEach(itemId => {
+      const item = cartItems[itemId]
+      itemSubTotals.push(item.price * item.quantity)
+    })
+
+    const orderSubTotal = Number(
+      itemSubTotals.reduce( (curr, acc) => curr + acc, 0 ).toFixed(2)
+    )
+
+    const tax = Number((orderSubTotal * 0.08875).toFixed(2))
+    const shipping = 9.99
+    const grandTotal = (orderSubTotal + tax + shipping).toFixed(2)
+
+    return {
+      subTotal: orderSubTotal,
+      tax,
+      shipping,
+      grandTotal
+    }
+  }
+
+  /**
+   *
+    * @param {Object} items
+   * @param {number} count
+   * @param {Object} itemToAdd
+   * @returns {{count: number, subTotal: {shipping: number, grandTotal: string, tax: number, subTotal: number}, items: Object}}
+   */
+  static addItemToCart({ items, count }, { payload: itemToAdd}) {
+    const itemsClone = Object.assign({}, items)
+    const updatedCount = count + 1
+
+    itemToAdd.cartId = count
+    itemsClone[count] = itemToAdd
+
+    return {
+      count: updatedCount,
+      items: itemsClone,
+      subTotal: this.calculateSubTotal(itemsClone)
+    }
+  }
+
+  static removeItemFromCart({ items, count }, { payload: IdToRemove}) {
+    const itemsClone = Object.assign({}, items)
+    const updatedCount = count - 1
+
+    delete itemsClone[IdToRemove]
+
+    return {
+      count: updatedCount,
+      items: itemsClone,
+      subTotal: this.calculateSubTotal(itemsClone)
+    }
+  }
+
+  /**
+   *
+   * @param {Object} items
+   * @param {number} count
+   * @param {Object} payload
+   * @returns {{count: number, subTotal: {shipping: number, grandTotal: string, tax: number, subTotal: number}, items: Object}}
+   */
+  static updateItemQuantity({ items, count }, { payload }) {
+    const itemsClone = Object.assign({}, items)
+    const {itemId, quantity} = payload
+    let updatedCount
+
+    if (quantity === 0) {
+      delete itemsClone[itemId]
+      updatedCount = count -1
+    } else {
+      itemsClone[itemId].quantity = quantity
+      updatedCount = count
+    }
+
+    return {
+      count: updatedCount,
+      items: itemsClone,
+      subTotal: this.calculateSubTotal(itemsClone)
+    }
   }
 }
