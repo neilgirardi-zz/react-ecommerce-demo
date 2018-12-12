@@ -1,6 +1,7 @@
 import { ADD_TO_CART } from '../actions/addToCart'
 import { REMOVE_FROM_CART } from '../actions/removeFromCart'
 import { UPDATE_CART_QUANTITY } from '../actions/updateCartQuantity'
+import { CLEAR_CART } from '../actions/clearCart'
 
 export default (state={items: {}, count: 0}, action) => {
   switch(action.type) {
@@ -12,6 +13,9 @@ export default (state={items: {}, count: 0}, action) => {
 
     case UPDATE_CART_QUANTITY:
       return GetNextCartState.updateItemQuantity(state, action)
+
+    case CLEAR_CART:
+      return {items: {}, count: 0}
 
     default:
       return state

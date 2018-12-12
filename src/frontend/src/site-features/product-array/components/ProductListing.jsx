@@ -20,7 +20,7 @@ class ProductListing extends PureComponent {
 
     _addToCart(){
         const cartItem = {
-            ...this.props.productDetail,
+            ...this.props.product,
             quantity: this.state.quantity
         };
         this.props.addToCart(cartItem)
