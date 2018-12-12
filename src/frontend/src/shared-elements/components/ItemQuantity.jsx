@@ -15,5 +15,4 @@ class ItemQuantity extends PureComponent {
   }
 }
 
-
 export default ItemQuantity

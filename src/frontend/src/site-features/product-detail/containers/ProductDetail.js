@@ -1,40 +1,25 @@
 import { connect } from 'react-redux'
 import ProductDetail from '../components/ProductDetail'
-import updateProductDetail from '../actions/updateProductDetail'
+import fetchProductDetail from '../actions/thunks/fetchAndUpdateProductDetail'
 import addToCart from '../../cart/actions/addToCart'
 
 const stateToProps = ( state, ownProps ) => {
-  const { productArray, productDetail } = state
-  const { products } = productArray
+  const { productDetail } = state
   return {
-    products,
     productDetail
   }
 }
 
 const dispatchToProps = (dispatch, ownProps) => {
   return {
-    updateProductDetail: (productDetails) => dispatch(updateProductDetail(productDetails)),
+    fetchProductDetail: (productId) => dispatch(fetchProductDetail(productId)),
     addToCart: (cartItem) => dispatch(addToCart(cartItem))
-  }
-}
-
-const mergeProps = (stateProps, dispatchProps, ownProps) => {
-  const { products } = stateProps
-  const { updateProductDetail } = dispatchProps
-  const detail = products.filter( p => p.id === ownProps.productId ).pop()
-  updateProductDetail(detail)
-  return {
-    ...stateProps,
-    ...dispatchProps,
-    ...ownProps
   }
 }
 
 const connected = connect(
   stateToProps,
-  dispatchToProps,
-  mergeProps
+  dispatchToProps
 )(ProductDetail)
 
 export default connected

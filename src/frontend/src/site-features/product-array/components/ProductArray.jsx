@@ -16,7 +16,7 @@ class ProductArray extends PureComponent {
   }
 
   _getProducts(tag) {
-    (tag === undefined) ? this.props.fetchProducts() : this.props.filterProducts(tag)
+    (tag === undefined) ? this.props.fetchProducts() : this.props.fetchFilteredProducts(tag)
   }
 
 

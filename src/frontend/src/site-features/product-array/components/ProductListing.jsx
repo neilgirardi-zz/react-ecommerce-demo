@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
-import ItemQuantity from '../../../reusable-elements/components/ItemQuantity'
+import ItemQuantity from '../../../shared-elements/components/ItemQuantity'
 
 class ProductListing extends PureComponent {
     constructor (props) {
@@ -22,7 +22,7 @@ class ProductListing extends PureComponent {
         const cartItem = {
             ...this.props.productDetail,
             quantity: this.state.quantity
-        }
+        };
         this.props.addToCart(cartItem)
     }
 
@@ -36,10 +36,6 @@ class ProductListing extends PureComponent {
 
                 {p.thumbnail &&
                     <img src={p.thumbnail} alt={p.title} />
-                }
-
-                {p.description &&
-                    <p>{p.description}</p>
                 }
 
                 {p.price &&

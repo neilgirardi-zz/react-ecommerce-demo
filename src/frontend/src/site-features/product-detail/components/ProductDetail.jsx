@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
-import ItemQuantity from '../../../reusable-elements/components/ItemQuantity'
+import ItemQuantity from '../../../shared-elements/components/ItemQuantity'
 
 class ProductDetail extends PureComponent {
   constructor (props) {
@@ -10,6 +10,10 @@ class ProductDetail extends PureComponent {
     }
     this._updateQuantity = this._updateQuantity.bind(this)
     this._addToCart = this._addToCart.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.fetchProductDetail(this.props.productId)
   }
 
   _updateQuantity(evt){
@@ -33,9 +37,7 @@ class ProductDetail extends PureComponent {
         {d &&
           <>
             <h2>
-              <Link to={`/detail/${d.id}`}>
-                {d.title}
-              </Link>
+              <Link to={`/detail/${d.id}`}>{d.title}</Link>
             </h2>
 
             {d.images && Array.isArray(d.images) &&

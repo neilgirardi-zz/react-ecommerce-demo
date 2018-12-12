@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import fetchProducts from '../actions/fetchProducts'
-import filterProducts from '../actions/filterProducts'
+import fetchProducts from '../actions/thunks/fetchAndUpdateProducts'
+import fetchFilteredProducts from '../actions/thunks/fetchAndFilterProducts'
 import ProductArray from '../components/ProductArray'
 import addToCart from '../../cart/actions/addToCart'
 
@@ -13,7 +13,7 @@ const stateToProps = (state, ownProps) => {
 const dispatchToProps = (dispatch, ownProps) => {
   return {
     fetchProducts: () => dispatch(fetchProducts()),
-    filterProducts: (tag) => dispatch(filterProducts(tag)),
+    fetchFilteredProducts: (tag) => dispatch(fetchFilteredProducts(tag)),
     addToCart: (cartItem) => dispatch(addToCart(cartItem))
   }
 }
