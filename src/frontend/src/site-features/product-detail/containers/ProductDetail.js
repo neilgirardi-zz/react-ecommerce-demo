@@ -3,14 +3,14 @@ import ProductDetail from '../components/ProductDetail'
 import fetchProductDetail from '../actions/thunks/fetchAndUpdateProductDetail'
 import addToCart from '../../cart/actions/addToCart'
 
-const stateToProps = ( state, ownProps ) => {
+const stateToProps = (state) => {
   const { productDetail } = state
   return {
     productDetail
   }
 }
 
-const dispatchToProps = (dispatch, ownProps) => {
+const dispatchToProps = (dispatch) => {
   return {
     fetchProductDetail: (productId) => dispatch(fetchProductDetail(productId)),
     addToCart: (cartItem) => dispatch(addToCart(cartItem))

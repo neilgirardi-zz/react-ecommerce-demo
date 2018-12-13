@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import CartItem from '../containers/cartItem'
 
 class CartItems extends PureComponent {
@@ -22,6 +23,11 @@ class CartItems extends PureComponent {
         return (<div>Your cart is empty</div>)
     }
   }
+}
+
+CartItems.propTypes = {
+  products: PropTypes.array,
+  removeFromCart: PropTypes.func
 }
 
 export default CartItems

@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import ItemQuantity from '../../../shared-elements/components/ItemQuantity'
 
 class ProductDetail extends PureComponent {
@@ -100,6 +101,12 @@ class ProductDetail extends PureComponent {
       </>
     )
   }
+}
+
+ProductDetail.propTypes = {
+  productId: PropTypes.string,
+  productDetail: PropTypes.object,
+  fetchProductDetail: PropTypes.func
 }
 
 export default ProductDetail

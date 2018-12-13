@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import '../../../App.scss'
 
 class Header extends PureComponent {
@@ -33,4 +34,9 @@ class Header extends PureComponent {
     )
   }
 }
+
+Header.propTypes = {
+  cartCount: PropTypes.number
+}
+
 export default Header

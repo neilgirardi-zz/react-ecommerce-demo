@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types'
 import CartItems from './CartItems'
 import CartSubTotal from './CartSubTotal'
 import SubmitOrderButton from './SubmitOrderButton'
@@ -38,6 +39,14 @@ class Cart extends PureComponent {
       </>
     )
   }
+}
+
+Cart.propTypes = {
+  cart: PropTypes.object,
+  submitOrder: PropTypes.func,
+  history: PropTypes.object,
+  removeFromCart: PropTypes.func
+
 }
 
 export default withRouter(Cart)

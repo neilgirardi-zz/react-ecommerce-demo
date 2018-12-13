@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
 class Checkout extends PureComponent {
   render () {
@@ -10,6 +11,10 @@ class Checkout extends PureComponent {
       </>
     )
   }
+}
+
+Checkout.propTypes = {
+  orderStatus: PropTypes.object
 }
 
 export default Checkout

@@ -4,13 +4,13 @@ import fetchFilteredProducts from '../actions/thunks/fetchAndFilterProducts'
 import ProductArray from '../components/ProductArray'
 import addToCart from '../../cart/actions/addToCart'
 
-const stateToProps = (state, ownProps) => {
+const stateToProps = (state) => {
   return {
     products: state.productArray.products,
   }
 }
 
-const dispatchToProps = (dispatch, ownProps) => {
+const dispatchToProps = (dispatch) => {
   return {
     fetchProducts: () => dispatch(fetchProducts()),
     fetchFilteredProducts: (tag) => dispatch(fetchFilteredProducts(tag)),

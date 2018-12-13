@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import ItemQuantity from '../../../shared-elements/components/ItemQuantity'
 
 class CartItem extends PureComponent {
@@ -57,6 +58,11 @@ class CartItem extends PureComponent {
       </>
     )
   }
+}
+
+CartItem.propTypes = {
+  product: PropTypes.object,
+  removeFromCart: PropTypes.func
 }
 
 export default CartItem

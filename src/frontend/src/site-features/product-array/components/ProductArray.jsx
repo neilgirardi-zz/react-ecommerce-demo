@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import ProductListing from './ProductListing'
 
 class ProductArray extends PureComponent {
@@ -37,6 +38,12 @@ class ProductArray extends PureComponent {
       </>
     )
   }
+}
+
+ProductArray.propTypes = {
+  tag: PropTypes.string,
+  products: PropTypes.array,
+  addToCart: PropTypes.func
 }
 
 export default ProductArray

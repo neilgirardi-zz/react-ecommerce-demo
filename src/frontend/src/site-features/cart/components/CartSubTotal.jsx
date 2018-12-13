@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
 class CartSubTotal extends PureComponent {
   render () {
@@ -15,6 +16,11 @@ class CartSubTotal extends PureComponent {
       return null
     }
   }
+}
+
+CartSubTotal.propTypes = {
+  subTotal: PropTypes.object,
+  products: PropTypes.array
 }
 
 export default CartSubTotal

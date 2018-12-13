@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
 class ItemQuantity extends PureComponent {
   render() {
@@ -13,6 +14,11 @@ class ItemQuantity extends PureComponent {
       </>
     )
   }
+}
+
+ItemQuantity.propTypes = {
+  value: PropTypes.number,
+  onChangeCB: PropTypes.func
 }
 
 export default ItemQuantity

@@ -3,18 +3,16 @@ import Cart from '../components/Cart'
 import submitOrder from '../actions/thunks/submitOrder'
 import removeFromCart from '../actions/removeFromCart'
 
-const stateToProps = (state, ownProps) => {
+const stateToProps = (state) => {
   const { cart } = state;
   return {
     cart
   }
 }
 
-const dispatchToProps = (dispatch, ownProps) => {
+const dispatchToProps = (dispatch) => {
   return {
-    submitOrder: (history) => {
-      const orderResponse = dispatch(submitOrder(history))
-    },
+    submitOrder: (history) => dispatch(submitOrder(history)),
     removeFromCart: (cartItemId) => dispatch(removeFromCart(cartItemId))
   }
 }
