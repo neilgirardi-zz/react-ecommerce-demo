@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import Products from '../../../site-features/product-array/containers/ProductArray'
 import ProductDetail from '../../../site-features/product-detail/containers/ProductDetail'
 import Cart from '../../../site-features/cart/containers/cart'
+import Checkout from '../../../site-features/checkout/container/checkout'
 
 class MainContent extends Component {
 
@@ -22,13 +23,11 @@ class MainContent extends Component {
         />
 
         <Route path='/cart' render={ props => (
-         <Cart {...this.props} />)}
+         <Cart />)}
         />
 
-        <Route path='/checkout' render={props => (
-          <div>
-            <h1>Checkout</h1>
-          </div>)}
+        <Route path='/checkout' render={ props => (
+          <Checkout />)}
         />
 
       </Switch>

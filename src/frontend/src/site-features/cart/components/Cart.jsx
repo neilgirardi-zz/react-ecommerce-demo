@@ -1,17 +1,41 @@
 import React, { PureComponent } from 'react'
-import { withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
+import CartItems from './CartItems'
+import CartSubTotal from './CartSubTotal'
+import SubmitOrderButton from './SubmitOrderButton'
 
 class Cart extends PureComponent {
-  constructor (props) {
-    super(props)
-  }
 
   render () {
+    const { cart, submitOrder, history, removeFromCart } = this.props
+    const { items, subTotal } = cart
+    const products = [];
+
+    for (let item in items) {
+      const i = items[item]
+      products.push(i)
+    }
+
     return (
-      <div>
-        <h1>Cart!</h1>
-        <button onClick={() => this.props.submitOrder(this.props.history)}>Submit Order</button>
-      </div>
+      <>
+        <h1>Cart</h1>
+
+        <CartItems
+          products={products}
+          removeFromCart={removeFromCart}
+        />
+
+        <CartSubTotal
+          subTotal={subTotal}
+          products={products}
+        />
+
+        <SubmitOrderButton
+          submitOrder={submitOrder}
+          history={history}
+          products={products}
+        />
+      </>
     )
   }
 }

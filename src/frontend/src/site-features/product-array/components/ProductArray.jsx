@@ -29,7 +29,7 @@ class ProductArray extends PureComponent {
           <ul>
             {products.map((p, i) => (
               <li key={i}>
-                <ProductListing product={p} addToCart={this.props.addToCart}/>
+                <ProductListing product={p} addToCart={this.props.addToCart} />
               </li>
             ))}
           </ul>

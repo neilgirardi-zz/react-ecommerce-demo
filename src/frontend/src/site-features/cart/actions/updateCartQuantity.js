@@ -1,8 +1,8 @@
 export const UPDATE_CART_QUANTITY = 'UPDATE_CART_QUANTITY'
 
-export default function(qty) {
+export default function(cartItemId, qty) {
   return {
     type: UPDATE_CART_QUANTITY,
-    payload: qty
+    payload: {cartItemId, qty}
   }
 }

@@ -30,13 +30,12 @@ class GetNextCartState {
    * @returns {{shipping: number, grandTotal: string, tax: number, subTotal: number}}
    */
   static calculateSubTotal(cartItems) {
-    const cartItemIds = Object.keys(cartItems)
     const itemSubTotals = []
 
-    cartItemIds.forEach(itemId => {
-      const item = cartItems[itemId]
+    for (let cartItem in cartItems) {
+      let item = cartItems[cartItem]
       itemSubTotals.push(item.price * item.quantity)
-    })
+    }
 
     const orderSubTotal = Number(
       itemSubTotals.reduce( (curr, acc) => curr + acc, 0 ).toFixed(2)
@@ -97,14 +96,14 @@ class GetNextCartState {
    */
   static updateItemQuantity({ items, count }, { payload }) {
     const itemsClone = Object.assign({}, items)
-    const {itemId, quantity} = payload
+    const {cartItemId, qty} = payload
     let updatedCount
 
-    if (quantity === 0) {
-      delete itemsClone[itemId]
+    if (qty === 0) {
+      delete itemsClone[cartItemId]
       updatedCount = count -1
     } else {
-      itemsClone[itemId].quantity = quantity
+      itemsClone[cartItemId].quantity = qty
       updatedCount = count
     }
 

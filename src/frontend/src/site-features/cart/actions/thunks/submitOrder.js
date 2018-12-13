@@ -1,4 +1,6 @@
 import axios from 'axios'
+import clearCart from '../clearCart'
+import setOrderStatus from '../../../checkout/actions/setOrderStatus'
 
 export default function (history) {
   return function(dispatch, getState) {
@@ -21,7 +23,8 @@ export default function (history) {
     }
     return axios.post(url, order)
       .then(response => {
-        console.log(response)
+        dispatch(setOrderStatus(response.data))
+        dispatch(clearCart())
         history.push('/checkout')
       })
   }
