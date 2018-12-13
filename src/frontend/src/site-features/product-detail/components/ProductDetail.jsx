@@ -25,16 +25,18 @@ class ProductDetail extends PureComponent {
 
   _addToCart(){
     const cartItem = {
-      ...this.props.productDetail,
+      ...this.props.product,
       quantity: this.state.quantity
     }
     this.props.addToCart(cartItem)
   }
 
+  // make button text and callback parameterized (either add or remove)
+
   render () {
-    const { productDetail: d } = this.props
+    const { product: d } = this.props
     return (
-      <>
+      <div className='container'>
         {d &&
           <>
             <h2>
@@ -72,7 +74,11 @@ class ProductDetail extends PureComponent {
               onChangeCB={(e) => this._updateQuantity(e)}
             />
 
-            <button disabled={!d.inStock} onClick={() => this._addToCart()}>Add to Cart</button>
+            <button
+              disabled={!d.inStock}
+              onClick={() => this._addToCart()}
+              className='btn btn-primary'
+            >Add to Cart</button>
 
             <h2>Reviews:</h2>
 
@@ -98,7 +104,7 @@ class ProductDetail extends PureComponent {
             }
           </>
         }
-      </>
+      </div>
     )
   }
 }

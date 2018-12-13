@@ -6,7 +6,9 @@ class SubmitOrderButton extends PureComponent {
     const { products, submitOrder, history } = this.props
     if (products && products.length) {
       return (
-        <button onClick={() => submitOrder(history)}>Submit Order</button>
+        <button
+          className='btn btn-success'
+          onClick={() => submitOrder(history)}>Submit Order</button>
       )
     } else {
       return null

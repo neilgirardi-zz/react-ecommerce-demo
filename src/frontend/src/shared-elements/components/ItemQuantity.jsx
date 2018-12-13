@@ -4,14 +4,15 @@ import PropTypes from 'prop-types'
 class ItemQuantity extends PureComponent {
   render() {
     return (
-      <>
-        <span className={'input-label'}>Quantity</span>
+      <div className='form-group'>
+        <label className={'input-label'}>Quantity</label>
         <input
+          className='form-control'
           type={'number'}
           value={this.props.value}
           onChange={(e) => this.props.onChangeCB(e)}
         />
-      </>
+      </div>
     )
   }
 }

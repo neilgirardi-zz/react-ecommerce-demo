@@ -20,16 +20,18 @@ class Header extends PureComponent {
   render () {
     return (
       <header className='App-header'>
-        <ul>
-          <li>
-            <Link to={'/'}>Home</Link>
-          </li>
-          {this.state.cartCount > 0 &&
+        <nav className="navbar navbar-dark bg-light">
+          <ul className='container'>
             <li>
-              <Link to={'/cart'}>Cart ({this.state.cartCount})</Link>
+              <Link to={'/'}>Home</Link>
             </li>
-          }
-        </ul>
+            {this.state.cartCount > 0 &&
+              <li>
+                <Link to={'/cart'}>Cart ({this.state.cartCount})</Link>
+              </li>
+            }
+          </ul>
+        </nav>
       </header>
     )
   }

@@ -6,9 +6,9 @@ class Checkout extends PureComponent {
     const { orderStatus } = this.props
     const { message } = orderStatus
     return (
-      <>
-        <p>{message}</p>
-      </>
+      <div className='container'>
+        <h1>{message}</h1>
+      </div>
     )
   }
 }

@@ -7,10 +7,10 @@ class CartSubTotal extends PureComponent {
     if (products.length) {
       return (
         <ul>
-          <li>Subtotal: {subTotal.subTotal}</li>
-          <li>Tax: {subTotal.tax}</li>
-          <li>Shipping: {subTotal.shipping}</li>
-          <li>TOTAL: {subTotal.grandTotal}</li>
+          <li>Subtotal: ${subTotal.subTotal.toLocaleString()}</li>
+          <li>Tax: ${subTotal.tax}</li>
+          <li>Shipping: ${subTotal.shipping}</li>
+          <li>TOTAL: ${subTotal.grandTotal}</li>
         </ul>)
     } else {
       return null

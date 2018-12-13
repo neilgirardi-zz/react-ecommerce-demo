@@ -54,7 +54,9 @@ class CartItem extends PureComponent {
           onChangeCB={(e) => this._updateQuantity(e)}
         />
 
-        <button onClick={() => this.props.removeFromCart(p.cartId)}>Remove Item</button>
+        <button
+          className='btn btn-light'
+          onClick={() => this.props.removeFromCart(p.cartId)}>Remove Item</button>
       </>
     )
   }

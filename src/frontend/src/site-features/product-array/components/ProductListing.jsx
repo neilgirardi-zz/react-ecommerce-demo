@@ -30,13 +30,13 @@ class ProductListing extends PureComponent {
     render() {
         const {product: p} = this.props;
         return (
-            <>
+            <div className='product'>
                 <h2>
                     <Link to={`/detail/${p.id}`}>{p.title}</Link>
                 </h2>
 
                 {p.thumbnail &&
-                    <img src={p.thumbnail} alt={p.title} />
+                    <img src={p.thumbnail} alt={p.title} className='img-thumbnail' />
                 }
 
                 {p.price &&
@@ -48,8 +48,10 @@ class ProductListing extends PureComponent {
                     onChangeCB={(e) => this._updateQuantity(e)}
                 />
 
-                <button disabled={!p.inStock} onClick={() => this._addToCart()}>Add to Cart</button>
-            </>
+                <button
+                    className='btn btn-primary'
+                    disabled={!p.inStock} onClick={() => this._addToCart()}>Add to Cart</button>
+            </div>
         )
     }
 }
