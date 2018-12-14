@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 class ItemQuantity extends PureComponent {
-  render() {
+  render () {
     return (
       <div className='form-group'>
         <label className={'input-label'}>Quantity</label>

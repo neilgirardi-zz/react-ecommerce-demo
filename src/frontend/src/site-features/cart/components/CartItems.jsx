@@ -20,7 +20,7 @@ class CartItems extends PureComponent {
         </ul>
       )
     } else {
-        return (<div>Your cart is empty</div>)
+      return (<div>Your cart is empty</div>)
     }
   }
 }

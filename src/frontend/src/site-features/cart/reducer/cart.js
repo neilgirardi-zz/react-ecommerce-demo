@@ -3,8 +3,8 @@ import { REMOVE_FROM_CART } from '../actions/removeFromCart'
 import { UPDATE_CART_QUANTITY } from '../actions/updateCartQuantity'
 import { CLEAR_CART } from '../actions/clearCart'
 
-export default (state={items: {}, count: 0}, action) => {
-  switch(action.type) {
+export default (state = { items: {}, count: 0 }, action) => {
+  switch (action.type) {
     case ADD_TO_CART:
       return GetNextCartState.addItemToCart(state, action)
 
@@ -15,7 +15,7 @@ export default (state={items: {}, count: 0}, action) => {
       return GetNextCartState.updateItemQuantity(state, action)
 
     case CLEAR_CART:
-      return {items: {}, count: 0}
+      return { items: {}, count: 0 }
 
     default:
       return state
@@ -23,13 +23,12 @@ export default (state={items: {}, count: 0}, action) => {
 }
 
 class GetNextCartState {
-
   /**
    *
    * @param {Object} cartItems
    * @returns {{shipping: number, grandTotal: string, tax: number, subTotal: number}}
    */
-  static calculateSubTotal(cartItems) {
+  static calculateSubTotal (cartItems) {
     const itemSubTotals = []
 
     for (let cartItem in cartItems) {
@@ -38,7 +37,7 @@ class GetNextCartState {
     }
 
     const orderSubTotal = Number(
-      itemSubTotals.reduce( (curr, acc) => curr + acc, 0 ).toFixed(2)
+      itemSubTotals.reduce((curr, acc) => curr + acc, 0).toFixed(2)
     )
 
     const tax = Number((orderSubTotal * 0.08875).toFixed(2))
@@ -60,7 +59,7 @@ class GetNextCartState {
    * @param {Object} itemToAdd
    * @returns {{count: number, subTotal: {shipping: number, grandTotal: string, tax: number, subTotal: number}, items: Object}}
    */
-  static addItemToCart({ items, count }, { payload: itemToAdd}) {
+  static addItemToCart ({ items, count }, { payload: itemToAdd }) {
     const itemsClone = Object.assign({}, items)
     const updatedCount = count + 1
 
@@ -74,7 +73,7 @@ class GetNextCartState {
     }
   }
 
-  static removeItemFromCart({ items, count }, { payload: IdToRemove}) {
+  static removeItemFromCart ({ items, count }, { payload: IdToRemove }) {
     const itemsClone = Object.assign({}, items)
     const updatedCount = count - 1
 
@@ -94,14 +93,14 @@ class GetNextCartState {
    * @param {Object} payload
    * @returns {{count: number, subTotal: {shipping: number, grandTotal: string, tax: number, subTotal: number}, items: Object}}
    */
-  static updateItemQuantity({ items, count }, { payload }) {
+  static updateItemQuantity ({ items, count }, { payload }) {
     const itemsClone = Object.assign({}, items)
-    const {cartItemId, qty} = payload
+    const { cartItemId, qty } = payload
     let updatedCount
 
     if (qty === 0) {
       delete itemsClone[cartItemId]
-      updatedCount = count -1
+      updatedCount = count - 1
     } else {
       itemsClone[cartItemId].quantity = qty
       updatedCount = count

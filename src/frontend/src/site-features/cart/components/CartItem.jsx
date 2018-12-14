@@ -5,36 +5,36 @@ import ItemQuantity from '../../../shared-elements/components/ItemQuantity'
 
 class CartItem extends PureComponent {
   constructor (props) {
-    super(props);
+    super(props)
     this.state = {
       quantity: 0
     }
-    this._updateQuantity = this._updateQuantity.bind(this);
+    this._updateQuantity = this._updateQuantity.bind(this)
     this._addToCart = this._addToCart.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.setState({
       quantity: this.props.quantity
     })
   }
 
-  _updateQuantity(evt){
+  _updateQuantity (evt) {
     this.setState({
       quantity: Number(evt.target.value)
     }, () => this.props.updateCartQuantity(this.props.product.cartId, this.state.quantity))
   }
 
-  _addToCart(){
+  _addToCart () {
     const cartItem = {
       ...this.props.product,
       quantity: this.state.quantity
-    };
+    }
     this.props.addToCart(cartItem)
   }
 
-  render() {
-    const {product: p} = this.props;
+  render () {
+    const { product: p } = this.props
     return (
       <>
         <h2>

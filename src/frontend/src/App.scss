@@ -1,9 +1,13 @@
 @import '~bootstrap/scss/bootstrap.scss';
 
-.product-array, .product-detail{
+.product-array, .product-detail, .cart, .checkout {
 
   .product {
     margin-bottom: 1rem;
+  }
+
+  .reviews {
+    margin-top: 1rem;
   }
 
   h1 {
@@ -12,8 +16,9 @@
   }
 
    h2 {
-    font-size: 1.3rem;
-     font-weight: 700
+     font-size: 1.3rem;
+     font-weight: 700;
+     white-space: nowrap;
   }
 
   a {

@@ -4,7 +4,7 @@ import submitOrder from '../actions/thunks/submitOrder'
 import removeFromCart from '../actions/removeFromCart'
 
 const stateToProps = (state) => {
-  const { cart } = state;
+  const { cart } = state
   return {
     cart
   }

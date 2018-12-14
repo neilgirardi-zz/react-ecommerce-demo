@@ -6,27 +6,26 @@ import Cart from '../../../site-features/cart/containers/cart'
 import Checkout from '../../../site-features/checkout/container/checkout'
 
 class MainContent extends Component {
-
   render () {
     return (
       <Switch>
-        <Route exact path='/' render={ props => (
+        <Route exact path='/' render={props => (
           <Products />
         )} />
 
-        <Route path='/products/tags/:tag' render={ props => (
+        <Route path='/products/tags/:tag' render={props => (
           <Products tag={props.match.params.tag} />
         )} />
 
-        <Route path='/detail/:productId' render={ props => (
+        <Route path='/detail/:productId' render={props => (
           <ProductDetail productId={props.match.params.productId} />)}
         />
 
-        <Route path='/cart' render={ props => (
-         <Cart />)}
+        <Route path='/cart' render={props => (
+          <Cart />)}
         />
 
-        <Route path='/checkout' render={ props => (
+        <Route path='/checkout' render={props => (
           <Checkout />)}
         />
 

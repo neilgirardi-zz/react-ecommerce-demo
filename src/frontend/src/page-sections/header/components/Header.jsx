@@ -11,16 +11,16 @@ class Header extends PureComponent {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (nextProps.cartCount !== this.props.cartCount) {
-      this.setState({cartCount: nextProps.cartCount})
+      this.setState({ cartCount: nextProps.cartCount })
     }
   }
 
   render () {
     return (
       <header className='App-header'>
-        <nav className="navbar navbar-dark bg-light">
+        <nav className='navbar navbar-dark bg-light'>
           <ul className='container'>
             <li>
               <Link to={'/'}>Home</Link>

@@ -1,7 +1,7 @@
-import { UPDATE_PRODUCTS } from '../actions/updateProducts';
+import { UPDATE_PRODUCTS } from '../actions/updateProducts'
 import { FILTER_PRODUCTS } from '../actions/filterProducts'
 
-export default (state = {products: []}, action) => {
+export default (state = { products: [] }, action) => {
   switch (action.type) {
     case UPDATE_PRODUCTS:
       return {
@@ -11,7 +11,7 @@ export default (state = {products: []}, action) => {
     case FILTER_PRODUCTS:
       const filter = action.payload
       const { products } = state
-      const filtered =  products.filter(item => item.tags.indexOf(filter) !== -1)
+      const filtered = products.filter(item => item.tags.indexOf(filter) !== -1)
       return {
         products: filtered
       }

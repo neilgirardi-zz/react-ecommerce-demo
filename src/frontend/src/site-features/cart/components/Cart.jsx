@@ -1,16 +1,15 @@
 import React, { PureComponent } from 'react'
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import CartItems from './CartItems'
 import CartSubTotal from './CartSubTotal'
 import SubmitOrderButton from './SubmitOrderButton'
 
 class Cart extends PureComponent {
-
   render () {
     const { cart, submitOrder, history, removeFromCart } = this.props
     const { items, subTotal } = cart
-    const products = [];
+    const products = []
 
     for (let item in items) {
       const i = items[item]

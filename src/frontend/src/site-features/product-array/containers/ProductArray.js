@@ -6,7 +6,7 @@ import addToCart from '../../cart/actions/addToCart'
 
 const stateToProps = (state) => {
   return {
-    products: state.productArray.products,
+    products: state.productArray.products
   }
 }
 

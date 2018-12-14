@@ -13,25 +13,23 @@ class ProductDetail extends PureComponent {
     this._addToCart = this._addToCart.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.fetchProductDetail(this.props.productId)
   }
 
-  _updateQuantity(evt){
+  _updateQuantity (evt) {
     this.setState({
       quantity: Number(evt.target.value)
     })
   }
 
-  _addToCart(){
+  _addToCart () {
     const cartItem = {
       ...this.props.product,
       quantity: this.state.quantity
     }
     this.props.addToCart(cartItem)
   }
-
-  // make button text and callback parameterized (either add or remove)
 
   render () {
     const { product: p } = this.props
@@ -48,7 +46,7 @@ class ProductDetail extends PureComponent {
                 {
                   p.images.map((url, i) => (
                     <li key={i}>
-                      <img src={url} alt={p.title}/>
+                      <img src={url} alt={p.title} />
                     </li>
                   ))
                 }
@@ -67,7 +65,7 @@ class ProductDetail extends PureComponent {
             <div>
               <span
                 className={p.inStock ? 'badge badge-success' : 'badge badge-danger'}>
-                  {p.inStock ? 'In Stock!' : 'Out of Stock'}
+                {p.inStock ? 'In Stock!' : 'Out of Stock'}
               </span>
             </div>
             }
@@ -83,27 +81,34 @@ class ProductDetail extends PureComponent {
               className='btn btn-primary'
             >Add to Cart</button>
 
-            <h2>Reviews:</h2>
+            <div className='reviews'>
+              <h2>Reviews:</h2>
 
-            {p.reviews && Array.isArray(p.reviews) &&
-              p.reviews.map((r, i) => (
-                <div key={i}>
-                  <h3>{r.title}</h3>
-                  <p>{r.body}</p>
-                </div>
-              ))
-            }
+              {p.reviews && Array.isArray(p.reviews) &&
+                p.reviews.map((r, i) => (
+                  <div key={i}>
+                    <h2>{r.title}</h2>
+                    <p>{r.body}</p>
+                  </div>
+                ))
+              }
+            </div>
 
             {p.tags && Array.isArray(p.tags) &&
-              <ul>
-                {
-                  p.tags.map((t, i) => (
-                    <li key={i}>
-                      <Link to={`/products/tags/${t}`}>{t}</Link>
-                    </li>
-                  ))
-                }
-              </ul>
+              <>
+                <h2>Similar Products:</h2>
+                <ul>
+                  {
+                    p.tags.map((t, i) => (
+                      <li key={i}>
+                        <Link to={`/products/tags/${t}`}>
+                          <span className='badge badge-primary'>{t}</span>
+                        </Link>
+                      </li>
+                    ))
+                  }
+                </ul>
+                </>
             }
           </div>
         }
