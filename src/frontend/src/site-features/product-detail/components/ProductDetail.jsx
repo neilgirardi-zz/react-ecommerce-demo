@@ -34,39 +34,42 @@ class ProductDetail extends PureComponent {
   // make button text and callback parameterized (either add or remove)
 
   render () {
-    const { product: d } = this.props
+    const { product: p } = this.props
     return (
-      <div className='container'>
-        {d &&
-          <>
+      <div className='container product-detail'>
+        {p &&
+          <div className='product'>
             <h2>
-              <Link to={`/detail/${d.id}`}>{d.title}</Link>
+              <Link to={`/detail/${p.id}`}>{p.title}</Link>
             </h2>
 
-            {d.images && Array.isArray(d.images) &&
+            {p.images && Array.isArray(p.images) &&
               <ul>
                 {
-                  d.images.map((url, i) => (
+                  p.images.map((url, i) => (
                     <li key={i}>
-                      <img src={url} alt={d.title}/>
+                      <img src={url} alt={p.title}/>
                     </li>
                   ))
                 }
               </ul>
             }
 
-            {d.description &&
-              <p>{d.description}</p>
+            {p.description &&
+              <p>{p.description}</p>
             }
 
-            {d.price &&
-              <p>{`$${d.price}`}</p>
+            {p.price &&
+              <p>{`$${p.price}`}</p>
             }
 
-            {d.inStock !== undefined &&
-              <div>
-                Availability: {d.inStock ? 'In Stock!' : 'Out of Stock'}
-              </div>
+            {p.inStock !== undefined &&
+            <div>
+              <span
+                className={p.inStock ? 'badge badge-success' : 'badge badge-danger'}>
+                  {p.inStock ? 'In Stock!' : 'Out of Stock'}
+              </span>
+            </div>
             }
 
             <ItemQuantity
@@ -75,15 +78,15 @@ class ProductDetail extends PureComponent {
             />
 
             <button
-              disabled={!d.inStock}
+              disabled={!p.inStock}
               onClick={() => this._addToCart()}
               className='btn btn-primary'
             >Add to Cart</button>
 
             <h2>Reviews:</h2>
 
-            {d.reviews && Array.isArray(d.reviews) &&
-              d.reviews.map((r, i) => (
+            {p.reviews && Array.isArray(p.reviews) &&
+              p.reviews.map((r, i) => (
                 <div key={i}>
                   <h3>{r.title}</h3>
                   <p>{r.body}</p>
@@ -91,10 +94,10 @@ class ProductDetail extends PureComponent {
               ))
             }
 
-            {d.tags && Array.isArray(d.tags) &&
+            {p.tags && Array.isArray(p.tags) &&
               <ul>
                 {
-                  d.tags.map((t, i) => (
+                  p.tags.map((t, i) => (
                     <li key={i}>
                       <Link to={`/products/tags/${t}`}>{t}</Link>
                     </li>
@@ -102,7 +105,7 @@ class ProductDetail extends PureComponent {
                 }
               </ul>
             }
-          </>
+          </div>
         }
       </div>
     )

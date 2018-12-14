@@ -43,6 +43,15 @@ class ProductListing extends PureComponent {
                     <p>{`$${p.price}`}</p>
                 }
 
+                {p.inStock !== undefined &&
+                <div>
+                  <span
+                    className={p.inStock ? 'badge badge-success' : 'badge badge-danger'}>
+                      {p.inStock ? 'In Stock!' : 'Out of Stock'}
+                  </span>
+                </div>
+                }
+
                 <ItemQuantity
                     value={this.state.quantity}
                     onChangeCB={(e) => this._updateQuantity(e)}
