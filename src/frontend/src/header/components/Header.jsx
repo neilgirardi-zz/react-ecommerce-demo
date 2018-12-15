@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import '../../../App.scss'
+import '../../App.scss'
 
 class Header extends PureComponent {
   constructor (props) {

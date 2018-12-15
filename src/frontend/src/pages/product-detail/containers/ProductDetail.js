@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import ProductDetail from '../components/ProductDetail'
+import Product from '../../../shared-components/Product'
 import fetchProductDetail from '../actions/thunks/fetchAndUpdateProductDetail'
 import addToCart from '../../cart/actions/addToCart'
 
@@ -20,6 +20,6 @@ const dispatchToProps = (dispatch) => {
 const connected = connect(
   stateToProps,
   dispatchToProps
-)(ProductDetail)
+)(Product)
 
 export default connected

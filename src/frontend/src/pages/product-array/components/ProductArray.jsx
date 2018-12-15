@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import ProductListing from './ProductListing'
+import Product from '../../../shared-components/Product'
 
 class ProductArray extends PureComponent {
   componentDidMount () {
@@ -28,7 +28,7 @@ class ProductArray extends PureComponent {
           <ul className='row'>
             {products.map((p, i) => (
               <li key={i} className='col-md-3'>
-                <ProductListing product={p} addToCart={this.props.addToCart} />
+                <Product product={p} addToCart={this.props.addToCart} />
               </li>
             ))}
           </ul>

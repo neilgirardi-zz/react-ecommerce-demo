@@ -7,9 +7,9 @@ class CartItems extends PureComponent {
     const { products, removeFromCart } = this.props
     if (products && products.length > 0) {
       return (
-        <ul>
+        <ul className='row'>
           {products.map((p, i) => (
-            <li key={i}>
+            <li key={i} className='col-md-3'>
               <CartItem
                 product={p}
                 quantity={p.quantity}

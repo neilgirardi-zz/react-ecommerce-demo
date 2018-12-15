@@ -1,22 +1,29 @@
 import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import ItemQuantity from '../../../shared-elements/components/ItemQuantity'
+import ItemQuantity from '../../../shared-components/ItemQuantity'
+import ProductThumbnail from '../../../shared-components/ProductThumbnail'
 
-class ProductListing extends PureComponent {
+class CartItem extends PureComponent {
   constructor (props) {
     super(props)
     this.state = {
-      quantity: 1
+      quantity: 0
     }
     this._updateQuantity = this._updateQuantity.bind(this)
     this._addToCart = this._addToCart.bind(this)
   }
 
+  componentDidMount () {
+    this.setState({
+      quantity: this.props.quantity
+    })
+  }
+
   _updateQuantity (evt) {
     this.setState({
       quantity: Number(evt.target.value)
-    })
+    }, () => this.props.updateCartQuantity(this.props.product.cartId, this.state.quantity))
   }
 
   _addToCart () {
@@ -30,26 +37,15 @@ class ProductListing extends PureComponent {
   render () {
     const { product: p } = this.props
     return (
-      <div className='product'>
+      <>
         <h2>
           <Link to={`/detail/${p.id}`}>{p.title}</Link>
         </h2>
 
-        {p.thumbnail &&
-        <img src={p.thumbnail} alt={p.title} className='img-thumbnail' />
-        }
+       <ProductThumbnail thumbnail={p.thumbnail} altText={p.description} />
 
         {p.price &&
-        <p>{`$${p.price}`}</p>
-        }
-
-        {p.inStock !== undefined &&
-        <div>
-          <span
-            className={p.inStock ? 'badge badge-success' : 'badge badge-danger'}>
-            {p.inStock ? 'In Stock!' : 'Out of Stock'}
-          </span>
-        </div>
+          <p>{`$${p.price}`}</p>
         }
 
         <ItemQuantity
@@ -58,16 +54,16 @@ class ProductListing extends PureComponent {
         />
 
         <button
-          className='btn btn-primary'
-          disabled={!p.inStock} onClick={() => this._addToCart()}>Add to Cart</button>
-      </div>
+          className='btn btn-light'
+          onClick={() => this.props.removeFromCart(p.cartId)}>Remove Item</button>
+      </>
     )
   }
 }
 
-ProductListing.propTypes = {
+CartItem.propTypes = {
   product: PropTypes.object,
-  addToCart: PropTypes.func
+  removeFromCart: PropTypes.func
 }
 
-export default ProductListing
+export default CartItem

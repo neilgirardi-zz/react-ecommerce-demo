@@ -8,6 +8,10 @@
 
   .reviews {
     margin-top: 1rem;
+
+    .star-ratings {
+      margin-bottom: 1rem;
+    }
   }
 
   h1 {
@@ -32,8 +36,14 @@ ul {
   padding: 0;
 }
 
-header nav {
+header {
   margin-bottom: 1rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
 }
 
 nav ul {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Products from '../../../site-features/product-array/containers/ProductArray'
-import ProductDetail from '../../../site-features/product-detail/containers/ProductDetail'
-import Cart from '../../../site-features/cart/containers/cart'
-import Checkout from '../../../site-features/checkout/container/checkout'
+import Products from '../../pages/product-array/containers/ProductArray'
+import ProductDetail from '../../pages/product-detail/containers/ProductDetail'
+import Cart from '../../pages/cart/containers/cart'
+import Checkout from '../../pages/checkout/container/checkout'
 
 class MainContent extends Component {
   render () {
@@ -18,7 +18,10 @@ class MainContent extends Component {
         )} />
 
         <Route path='/detail/:productId' render={props => (
-          <ProductDetail productId={props.match.params.productId} />)}
+          <ProductDetail
+            productId={props.match.params.productId}
+            isDetailView={true}
+          />)}
         />
 
         <Route path='/cart' render={props => (
