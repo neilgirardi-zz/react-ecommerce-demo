@@ -17,7 +17,7 @@ class Cart extends PureComponent {
     }
 
     return (
-      <div className='container'>
+      <div className='container cart'>
         <h1>Cart</h1>
 
         <CartItems
