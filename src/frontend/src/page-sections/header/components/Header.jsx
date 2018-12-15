@@ -11,7 +11,7 @@ class Header extends PureComponent {
     }
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillUpdate (nextProps) {
     if (nextProps.cartCount !== this.props.cartCount) {
       this.setState({ cartCount: nextProps.cartCount })
     }

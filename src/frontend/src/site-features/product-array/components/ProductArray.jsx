@@ -8,7 +8,7 @@ class ProductArray extends PureComponent {
     this._getProducts(tag)
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillUpdate (nextProps) {
     const { tag } = nextProps
     if (tag !== this.props.tag) {
       this._getProducts(tag)
