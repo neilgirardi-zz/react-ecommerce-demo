@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Checkout from '../components/Checkout'
+import Checkout from '../Checkout'
 
 const stateToProps = (state) => {
   const { orderStatus } = state

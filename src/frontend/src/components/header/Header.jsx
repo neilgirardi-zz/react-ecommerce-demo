@@ -20,7 +20,7 @@ class Header extends PureComponent {
   render () {
     return (
       <header className='App-header'>
-        <nav className='navbar navbar-dark bg-light'>
+        <nav className='navbar navbar-dark fixed-top bg-light'>
           <ul className='container'>
             <li>
               <Link to={'/'}>Home</Link>

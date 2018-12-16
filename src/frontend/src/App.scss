@@ -1,9 +1,15 @@
 @import '~bootstrap/scss/bootstrap.scss';
 
 .product-array, .product-detail, .cart, .checkout {
+  padding-top: 4rem;
 
   .product {
     margin-bottom: 1rem;
+  }
+
+  .product-images {
+    width: 50%;
+    height: 50%
   }
 
   .reviews {

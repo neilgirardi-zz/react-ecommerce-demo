@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import fetchProducts from '../actions/thunks/fetchAndUpdateProducts'
 import fetchFilteredProducts from '../actions/thunks/fetchAndFilterProducts'
-import ProductArray from '../components/ProductArray'
+import ProductArray from '../ProductArray'
 import addToCart from '../../cart/actions/addToCart'
 
 const stateToProps = (state) => {

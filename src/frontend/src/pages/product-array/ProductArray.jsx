@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import Product from '../../../shared-components/Product'
+import Product from '../../components/product/Product'
 
 class ProductArray extends PureComponent {
   componentDidMount () {
@@ -22,7 +22,7 @@ class ProductArray extends PureComponent {
   render () {
     const { products } = this.props
     return (
-      <div className='container product-array'>
+      <div className='container product-array main-content'>
         <h1>Products</h1>
         {products && Array.isArray(products) &&
           <ul className='row'>

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import CartItem from '../components/CartItem'
+import CartItem from '../../../components/cart/CartItem'
 import updateCartQuantity from '../actions/updateCartQuantity'
 
 const dispatchToProps = (dispatch) => {

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import CartItem from '../containers/cartItem'
+import CartItem from '../../pages/cart/containers/cartItem'
 
 class CartItems extends PureComponent {
   render () {

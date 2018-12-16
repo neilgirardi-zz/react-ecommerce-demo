@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Header from '../components/Header'
+import Header from '../Header'
 
 const stateToProps = (state, ownProps) => {
   const { cart } = state

@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import ItemQuantity from '../../../shared-components/ItemQuantity'
-import ProductThumbnail from '../../../shared-components/ProductThumbnail'
+import ItemQuantity from '../product/components/ItemQuantity'
+import ProductThumbnail from '../product/components/ProductThumbnail'
 
 class CartItem extends PureComponent {
   constructor (props) {

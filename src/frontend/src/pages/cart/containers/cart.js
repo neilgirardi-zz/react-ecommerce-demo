@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Cart from '../components/Cart'
+import Cart from '../Cart'
 import submitOrder from '../actions/thunks/submitOrder'
 import removeFromCart from '../actions/removeFromCart'
 

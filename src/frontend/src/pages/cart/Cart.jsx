@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import CartItems from './CartItems'
-import CartSubTotal from './CartSubTotal'
-import SubmitOrderButton from './SubmitOrderButton'
+import CartItems from '../../components/cart/CartItems'
+import CartSubTotal from '../../components/cart/CartSubTotal'
+import SubmitOrderButton from '../../components/cart/SubmitOrderButton'
 
 class Cart extends PureComponent {
   render () {
@@ -17,7 +17,7 @@ class Cart extends PureComponent {
     }
 
     return (
-      <div className='container cart'>
+      <div className='container cart main-content'>
         <h1>Cart</h1>
 
         <CartItems
