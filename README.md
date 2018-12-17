@@ -1,5 +1,13 @@
 # Coding Challenge: Shopping Cart
 
+## Running the App
+```
+$ npm run setup
+$ npm start
+```
+* setup script will install the dependencies for the frontend and backend
+* start script will launch the backend as a node process on port :3001 and a Create React App dev server for the frontend on port :3000
+
 ## Overview
 
 Build an application, using the framework of your choice (excluding jQuery), that implements a product gallery and a shopping cart. The application must exist as a single page application, that is, served from a single HTML file and handle its own routing.

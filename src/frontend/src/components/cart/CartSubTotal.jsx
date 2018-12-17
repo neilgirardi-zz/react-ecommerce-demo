@@ -6,12 +6,27 @@ class CartSubTotal extends PureComponent {
     const { subTotal, products } = this.props
     if (products.length) {
       return (
-        <ul>
-          <li>Subtotal: ${subTotal.subTotal.toLocaleString()}</li>
-          <li>Tax: ${subTotal.tax}</li>
-          <li>Shipping: ${subTotal.shipping}</li>
-          <li>TOTAL: ${subTotal.grandTotal}</li>
-        </ul>)
+        <div className='subtotal row'>
+          <div className='col-md-3'>
+            <div className="d-flex justify-content-between">
+              <span>Subtotal:</span>
+              <span>${subTotal.subTotal.toLocaleString()}</span>
+            </div>
+            <div className="d-flex justify-content-between">
+              <span>Tax:</span>
+              <span>${subTotal.tax}</span>
+            </div>
+            <div className="d-flex justify-content-between">
+              <span>Shipping:</span>
+              <span>${subTotal.shipping}</span>
+            </div>
+            <div className="d-flex justify-content-between">
+              <span><strong>Total:</strong></span>
+              <span><strong>${subTotal.grandTotal}</strong></span>
+            </div>
+          </div>
+        </div>
+     )
     } else {
       return null
     }

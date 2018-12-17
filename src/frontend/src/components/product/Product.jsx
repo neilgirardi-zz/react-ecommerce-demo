@@ -56,7 +56,10 @@ class Product extends PureComponent {
           }
 
           {!isDetailView &&
-            <ProductThumbnail thumbnail={p.thumbnail} altText={p.title} />
+            <ProductThumbnail
+              thumbnail={p.thumbnail}
+              altText={p.title}
+            />
           }
 
           {p.price &&
