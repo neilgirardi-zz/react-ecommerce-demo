@@ -6,7 +6,7 @@ class ItemInventoryStatus extends PureComponent {
     return (
       <>
         {inStock !== undefined &&
-            <div>
+            <div className={'stock-status'}>
                 <span
                   className={inStock ? 'badge badge-success' : 'badge badge-danger'}>
                   {inStock ? 'In Stock' : 'Out of Stock'}

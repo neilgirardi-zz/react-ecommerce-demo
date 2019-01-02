@@ -1,9 +1,25 @@
 @import '~bootstrap/scss/bootstrap.scss';
 
-.product-array, .product-detail, .cart, .checkout {
-  padding-top: 4rem;
+.App-header {
+  .navbar {
+    padding: 0.5rem 0;
+  }
+}
 
-  .product, .img-thumbnail, .subtotal {
+.product-array, .product-detail, .cart, .checkout {
+  padding-top: 5rem;
+
+  .stock-status {
+    .badge {
+      font-size: 1rem
+    }
+  }
+
+  .product {
+    margin-bottom: 3rem;
+  }
+
+  .img-thumbnail, .subtotal {
     margin-bottom: 1rem;
   }
 
@@ -17,6 +33,22 @@
 
     .star-ratings {
       margin-bottom: 1rem;
+    }
+  }
+
+  .product-detail {
+    .item-quantity {
+      width: 25%;
+    }
+  }
+
+  .item-quantity {
+    padding-top: 1rem;
+    padding-right: 5rem;
+
+    label {
+      margin-right: 1rem;
+      padding-top: 0.5rem;
     }
   }
 
@@ -56,7 +88,7 @@ nav ul {
 
   a {
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 2rem;
   }
 
 }

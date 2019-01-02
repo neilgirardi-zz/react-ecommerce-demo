@@ -66,12 +66,17 @@ class Product extends PureComponent {
             <p>{`$${p.price}`}</p>
           }
 
-          <ItemInventoryStatus status={p.inStock} />
+          {p.inStock !== undefined &&
+            <>
+              <ItemInventoryStatus status={p.inStock}/>
 
-          <ItemQuantity
-            value={this.state.quantity}
-            onChangeCB={(e) => this._updateQuantity(e)}
-          />
+              <ItemQuantity
+                inStock={p.inStock}
+                value={this.state.quantity}
+                onChangeCB={(e) => this._updateQuantity(e)}
+              />
+            </>
+          }
 
           <button
             disabled={!p.inStock}
@@ -94,7 +99,7 @@ class Product extends PureComponent {
 
 Product.propTypes = {
   productId: PropTypes.string,
-  productDetail: PropTypes.object,
+  product: PropTypes.object,
   fetchProductDetail: PropTypes.func
 }
 

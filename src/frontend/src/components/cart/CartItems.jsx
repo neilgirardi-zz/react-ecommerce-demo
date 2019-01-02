@@ -13,6 +13,7 @@ class CartItems extends PureComponent {
               <CartItem
                 product={p}
                 quantity={p.quantity}
+                inStock={p.inStock}
                 removeFromCart={removeFromCart}
               />
             </li>))

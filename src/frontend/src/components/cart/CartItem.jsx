@@ -50,6 +50,7 @@ class CartItem extends PureComponent {
 
         <ItemQuantity
           value={this.state.quantity}
+          inStock={this.props.inStock}
           onChangeCB={(e) => this._updateQuantity(e)}
         />
 

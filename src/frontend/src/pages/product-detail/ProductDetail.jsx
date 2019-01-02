@@ -3,7 +3,7 @@ import Product from '../../components/product/Product.jsx'
 
 class ProductDetail extends PureComponent {
   render() {
-    const { productId, isDetailView, fetchProductDetail, addToCart, product  } = this.props
+    const { productId, product, isDetailView, fetchProductDetail, addToCart } = this.props
     return (
       <div className={'product-detail container'}>
         <Product
